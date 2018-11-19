@@ -6,6 +6,8 @@
     在这个目录下安装依赖的包文件 npm install
 ## 第三步
     在当前目录下执行node app
+## 第四步
+    访问首页http://localhost:8085/
     
     
 ## 文档
