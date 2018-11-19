@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="http://localhost:8085/static/css/index.css">
 </head>
 <body>
-首页
+<div class="head">
+    <h1>初步学习ajax</h1>
+    {% if login %}
+    <span>{{ login }}</span>
+    {% else %}
+    <span><a href="/login">登录</a><a href="/reg">注册</a></span>
+    {% endif %}
+</div>
+
 </body>
 </html>

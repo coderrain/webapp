@@ -31,9 +31,9 @@ app.engine('html', swig.renderFile);
 
 
 app.get('/', (req, res, next)=>{
-    if(!req.session.islogin) {
+    /*if(!req.session.islogin) {
         return res.redirect('/login')
-    }
+    }*/
     res.render('index',{
         login: req.session.islogin
     })
@@ -51,13 +51,16 @@ app.get('/login', (req, res, next)=>{
 
 app.post('/login', (req, res, next)=>{
     var body = req.body;
-    if(body.username === 'admin' && body.password === '123'){
-        req.session.islogin = body.username;
-        res.redirect('/')
-    }else{
-        res.redirect('/login')
-    }
-
+    fs.readFile('./userinfo.txt', (err, data)=> {
+        if(err) return err;
+        var result = JSON.parse(data);
+        if(body.username === result.name && body.password === result.password){
+            req.session.islogin = body.username;
+            res.redirect('/')
+        }else{
+            res.redirect('/login')
+        }
+    })
 })
 
 

@@ -1,0 +1,28 @@
+body{
+    background: red;
+    margin: 0;
+}
+.head{
+    font-size: 14px;
+    line-height: 45px;
+    background: #888;
+    overflow: hidden;
+    width:100%;
+}
+.head span{
+    float: right;
+    font-size: 16px;
+    padding-right: 30px;
+    line-height: 45px;
+}
+.head span a{
+    text-decoration: none;
+    padding-left: 20px;
+}
+.head h1{
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    float: left;
+    margin: 0;
+}
