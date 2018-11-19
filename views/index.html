@@ -15,5 +15,75 @@
     {% endif %}
 </div>
 
+<div id="thing"></div>
+
+<ul>
+
+</ul>
+
+<!--
+    /*
+    * ajax
+    * 做交互前后端交互
+    *
+    * 就是说前端去向后台请求数据
+    *
+    * 你妈让你去邻居家要个东西
+    *
+    * 邻居？id=iphone
+    *
+    * 邻居就知道了 去人家家里（数据库）
+    *
+    * 邻居给你了 （后台给你数据了）
+    *
+    *
+    * */
+
+-->
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script>
+    $.ajax({
+        url:'http://localhost:8085/thing',
+        type: 'get',
+        data: {
+            name: 'iphone'
+        },
+        success: function (result) {
+            //console.log(result);
+            $('#thing').html(result.data.name + "price" + result.data.price)
+
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+
+
+    $.ajax({
+        url:'http://localhost:8085/list',
+        type: 'get',
+        data: {},
+        success: function (result) {
+            //console.log(result);
+            if(result.code === 1) {
+                var dataList = result.data;
+                var str = "";
+                for(var i=0;i<dataList.length;i++) {
+                    str += "<li>";
+                    str += '<img src="'+ dataList[i].imgUrl +'" alt="">';
+                    str += "<strong>"+ dataList[i].title +"</strong>价格<span>￥" + dataList[i].price + "</span>";
+                    str += "</li>"
+                }
+
+            }
+            $('ul').html(str);
+            //console.log(result)
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+</script>
+
 </body>
 </html>

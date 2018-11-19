@@ -1,1 +1,1 @@
-{"username":"admin","password":"123","sex":"2","address":"河北省石家庄市桥西区"}
+{"username":"rain","password":"123","sex":"2","address":"123"}

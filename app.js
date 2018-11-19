@@ -54,7 +54,7 @@ app.post('/login', (req, res, next)=>{
     fs.readFile('./userinfo.txt', (err, data)=> {
         if(err) return err;
         var result = JSON.parse(data);
-        if(body.username === result.name && body.password === result.password){
+        if(body.username === result.username && body.password === result.password){
             req.session.islogin = body.username;
             res.redirect('/')
         }else{
@@ -89,6 +89,25 @@ app.get('/thing', (req, res, next) =>{
         }
     });
 
+})
+
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Credentials','true');
+    next();
+};
+app.use(allowCrossDomain);
+
+app.get('/list', (req, res, next)=>{
+    fs.readFile('./list.txt', (err, data)=>{
+        if(err) return err;
+        if(req.query['callback']) {
+            return res.jsonp({code: 1, data: JSON.parse(data)})
+        }
+        res.json({code: 1, data: JSON.parse(data)})
+    })
 })
 
 

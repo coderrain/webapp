@@ -45,6 +45,14 @@ http://localhost:8085/reg 相当于访问views里面的reg.html页面
    - 方式： post
    - 参数： username password sex address
    
+- 邻居接东西的demo
+  - 接口地址： /thing
+  - 参数： name
+
+- 图书列表
+  - 接口地址: /list
+  - 参数： 无
+   
    
 ## views里面的参数
 - index.html

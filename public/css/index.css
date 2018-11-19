@@ -26,3 +26,26 @@ body{
     float: left;
     margin: 0;
 }
+
+ul,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul{
+    background: #fff;
+    overflow: hidden;
+
+}
+li{
+    border:1px solid #ccc;
+    padding:10px;
+    width: 25%;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+}
+li img{
+    display: block;
+    margin: 0 auto;
+}
