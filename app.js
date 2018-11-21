@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const fs = require('fs');
 const app = express();
 const swig = require('swig');
@@ -64,26 +64,17 @@ app.post('/login', (req, res, next)=>{
 })
 
 
-app.get('/thing', (req, res, next) =>{
-    let name = req.query["name"] || 'iphone';
+app.get('/thing', (req, res, next) =>{console.log(req.query["name"]);
+    
     fs.readFile('./data.json',  (err, data)=>{
         if(err) return err;
         data = JSON.parse(data);
         for(var i=0;i<data.length;i++) {
-            if(data[i].name === "iphone") {
+            console.log(data[i].name, req.query["name"]);
+            if(data[i].name === req.query['name']) {
                 return res.json({
                     code: 1,
                     data: data[i]
-                })
-            }else if(data[i].name === "ipad"){
-                return res.json({
-                    code: 1,
-                    data: data[i]
-                })
-            }else{
-                return res.json({
-                    code: 1,
-                    data: {}
                 })
             }
         }
